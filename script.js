@@ -632,3 +632,18 @@ function throttle(func, limit) {
 window.addEventListener('scroll', throttle(() => {
     // Parallax and other scroll effects here
 }, 16)); // ~60fps
+
+document.getElementById("whatsappForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    let nome = document.getElementById("nome").value;
+    let email = document.getElementById("email").value;
+    let assunto = document.getElementById("assunto").value;
+    let mensagem = document.getElementById("mensagem").value;
+
+    let texto = `Olá! Me chamo ${nome}%0AEmail: ${email}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
+
+    let url = `https://wa.me/5511972821988?text=${texto}`; // coloque seu número no formato internacional
+
+    window.open(url, "_blank");
+});
