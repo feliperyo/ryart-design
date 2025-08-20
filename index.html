@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyArt Design - Criação de Sites Profissionais</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="RyArt Design Logo" class="logo-img">
+                <span class="logo-text">RyArt Design</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#services" class="nav-link">Serviços</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="hero-video.mp4" type="video/mp4">
+            <!-- Substitua por seu vídeo de fundo -->
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="RyArt Design">RyArt Design</span>
+                </h1>
+                <p class="hero-subtitle">Transformamos ideias em experiências digitais extraordinárias</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Ver Projetos</button>
+                    <button class="btn-secondary">Fale Conosco</button>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sobre Nós</h2>
+                <p class="section-subtitle">Inovação e criatividade em cada projeto</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Design que Impacta, Código que Funciona</h3>
+                    <p>Na RyArt Design, combinamos criatividade visual com tecnologia de ponta para criar sites que não
+                        apenas impressionam, mas também convertem. Nossa missão é transformar sua visão em uma presença
+                        digital poderosa.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="150">0</span>
+                            <span class="stat-label">Projetos Concluídos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="98">0</span>
+                            <span class="stat-label">% Satisfação</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Anos de Experiência</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="about-image.jpg" alt="Sobre RyArt Design" class="parallax-element">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <p class="section-subtitle">Soluções completas para sua presença digital</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites responsivos e otimizados com as mais modernas tecnologias do mercado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Design Responsivo</h3>
+                    <p>Experiências perfeitas em todos os dispositivos, do desktop ao mobile.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce</h3>
+                    <p>Lojas virtuais completas com sistemas de pagamento integrados.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Otimização</h3>
+                    <p>Posicionamento estratégico nos mecanismos de busca.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portfólio</h2>
+                <p class="section-subtitle">Nossos projetos em destaque</p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <img src="project1.jpg" alt="Projeto 1">
+                    <div class="portfolio-overlay">
+                        <h3>Projeto Web Corporativo</h3>
+                        <p>Site institucional moderno</p>
+                        <button class="btn-view">Ver Projeto</button>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ecommerce">
+                    <img src="project2.jpg" alt="Projeto 2">
+                    <div class="portfolio-overlay">
+                        <h3>Loja Virtual Premium</h3>
+                        <p>E-commerce completo</p>
+                        <button class="btn-view">Ver Projeto</button>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="project3.jpg" alt="Projeto 3">
+                    <div class="portfolio-overlay">
+                        <h3>Landing Page Conversão</h3>
+                        <p>Design focado em resultados</p>
+                        <button class="btn-view">Ver Projeto</button>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <img src="project4.jpg" alt="Projeto 4">
+                    <div class="portfolio-overlay">
+                        <h3>App Mobile Design</h3>
+                        <p>Interface intuitiva</p>
+                        <button class="btn-view">Ver Projeto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-subtitle">Vamos criar algo incrível juntos</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Fale Conosco</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@ryartdesign.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+55 (11) 99999-9999</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>São Paulo, SP - Brasil</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="email" placeholder="Seu E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Assunto" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="RyArt Design">
+                    <h3>RyArt Design</h3>
+                    <p>Transformando ideias em realidade digital</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Consultoria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>contato@ryartdesign.com</p>
+                    <p>+55 (11) 99999-9999</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RyArt Design. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
