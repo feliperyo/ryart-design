@@ -122,6 +122,178 @@ window.addEventListener('scroll', () => {
 const filterButtons = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
+// Portfolio Show More/Less Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    // Create show more/less button
+    const showMoreButton = document.createElement('div');
+    showMoreButton.className = 'show-more-container';
+    showMoreButton.innerHTML = `
+        <button class="btn-show-more" id="showMoreBtn">
+            <span class="btn-text">Ver Mais Projetos</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    `;
+
+    // Add CSS styles for the button
+    const showMoreCSS = `
+        .show-more-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .btn-show-more {
+            padding: 1rem 2rem;
+            background: var(--gradient-1);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-show-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-show-more i {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-show-more.expanded i {
+            transform: rotate(180deg);
+        }
+        
+        .portfolio-item.hidden {
+            display: none;
+        }
+        
+        .portfolio-item.show {
+            display: block;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+    `;
+
+    // Add styles to document
+    const style = document.createElement('style');
+    style.textContent = showMoreCSS;
+    document.head.appendChild(style);
+
+    // Insert button after portfolio grid
+    portfolioGrid.parentNode.insertBefore(showMoreButton, portfolioGrid.nextSibling);
+
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const btnText = showMoreBtn.querySelector('.btn-text');
+    const btnIcon = showMoreBtn.querySelector('i');
+
+    let isExpanded = false;
+    const itemsToShow = 6; // Número de projetos visíveis inicialmente
+
+    // Initially hide items beyond the first 6
+    function initializePortfolio() {
+        portfolioItems.forEach((item, index) => {
+            if (index >= itemsToShow) {
+                item.classList.add('hidden');
+            } else {
+                item.classList.add('show');
+            }
+        });
+    }
+
+    // Toggle show more/less
+    function togglePortfolioItems() {
+        if (!isExpanded) {
+            // Show more
+            portfolioItems.forEach((item, index) => {
+                if (index >= itemsToShow) {
+                    item.classList.remove('hidden');
+                    item.classList.add('show');
+                }
+            });
+            btnText.textContent = 'Ver Menos Projetos';
+            btnIcon.classList.add('expanded');
+            isExpanded = true;
+        } else {
+            // Show less
+            portfolioItems.forEach((item, index) => {
+                if (index >= itemsToShow) {
+                    item.classList.remove('show');
+                    item.classList.add('hidden');
+                }
+            });
+            btnText.textContent = 'Ver Mais Projetos';
+            btnIcon.classList.remove('expanded');
+            isExpanded = false;
+
+            // Scroll back to portfolio section smoothly
+            document.querySelector('#portfolio').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    // Event listener for button
+    showMoreBtn.addEventListener('click', togglePortfolioItems);
+
+    // Initialize portfolio on load
+    initializePortfolio();
+
+    // Update portfolio filter to work with show/hide functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+            let visibleCount = 0;
+
+            portfolioItems.forEach((item, index) => {
+                const shouldShow = filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+
+                if (shouldShow) {
+                    if (!isExpanded && visibleCount >= itemsToShow) {
+                        item.classList.add('hidden');
+                        item.classList.remove('show');
+                    } else {
+                        item.classList.remove('hidden');
+                        item.classList.add('show');
+                    }
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                    item.classList.remove('show');
+                }
+            });
+
+            // Show/hide the "show more" button based on filtered results
+            const totalVisible = Array.from(portfolioItems).filter(item => {
+                return filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+            }).length;
+
+            if (totalVisible > itemsToShow) {
+                showMoreButton.style.display = 'flex';
+            } else {
+                showMoreButton.style.display = 'none';
+            }
+        });
+    });
+});
+
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         // Remove active class from all buttons
