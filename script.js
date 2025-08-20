@@ -420,64 +420,64 @@ document.querySelector('.btn-secondary').addEventListener('click', () => {
     });
 });
 
-// Portfolio Modal (Optional Enhancement)
-function createPortfolioModal() {
-    const modal = document.createElement('div');
-    modal.className = 'portfolio-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <img src="" alt="" class="modal-image">
-            <div class="modal-info">
-                <h3 class="modal-title"></h3>
-                <p class="modal-description"></p>
-                <div class="modal-technologies"></div>
-                <a href="#" class="modal-link" target="_blank">Ver Site</a>
-            </div>
-        </div>
-    `;
+// // Portfolio Modal (Optional Enhancement)
+// function createPortfolioModal() {
+//     const modal = document.createElement('div');
+//     modal.className = 'portfolio-modal';
+//     modal.innerHTML = `
+//         <div class="modal-content">
+//             <span class="close-modal">&times;</span>
+//             <img src="" alt="" class="modal-image">
+//             <div class="modal-info">
+//                 <h3 class="modal-title"></h3>
+//                 <p class="modal-description"></p>
+//                 <div class="modal-technologies"></div>
+//                 <a href="#" class="modal-link" target="_blank">Ver Site</a>
+//             </div>
+//         </div>
+//     `;
 
-    modal.style.cssText = `
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-    `;
+//     modal.style.cssText = `
+//         display: none;
+//         position: fixed;
+//         z-index: 10000;
+//         left: 0;
+//         top: 0;
+//         width: 100%;
+//         height: 100%;
+//         background: rgba(0, 0, 0, 0.9);
+//         backdrop-filter: blur(10px);
+//     `;
 
-    const modalContent = modal.querySelector('.modal-content');
-    modalContent.style.cssText = `
-        position: relative;
-        margin: 5% auto;
-        padding: 2rem;
-        width: 80%;
-        max-width: 800px;
-        background: var(--dark-bg);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    `;
+//     const modalContent = modal.querySelector('.modal-content');
+//     modalContent.style.cssText = `
+//         position: relative;
+//         margin: 5% auto;
+//         padding: 2rem;
+//         width: 80%;
+//         max-width: 800px;
+//         background: var(--dark-bg);
+//         border-radius: 20px;
+//         border: 1px solid rgba(255, 255, 255, 0.1);
+//     `;
 
-    document.body.appendChild(modal);
+//     document.body.appendChild(modal);
 
-    // Close modal functionality
-    modal.querySelector('.close-modal').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+//     // Close modal functionality
+//     modal.querySelector('.close-modal').addEventListener('click', () => {
+//         modal.style.display = 'none';
+//     });
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+//     modal.addEventListener('click', (e) => {
+//         if (e.target === modal) {
+//             modal.style.display = 'none';
+//         }
+//     });
 
-    return modal;
-}
+//     return modal;
+// }
 
-const portfolioModal = createPortfolioModal();
+// const portfolioModal = createPortfolioModal();
 
 // Add click events to portfolio items
 document.querySelectorAll('.portfolio-item').forEach((item, index) => {
