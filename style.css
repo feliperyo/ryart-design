@@ -443,6 +443,7 @@ section {
 /* About Section */
 .about {
     background: var(--darker-bg);
+    overflow-x: hidden;
 }
 
 .about-content {
