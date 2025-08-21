@@ -499,6 +499,13 @@ section {
 .logo-sobre {
     width: 80%;
     margin: -75px 0 -50px 125px;
+    z-index: 99;
+}
+
+.logo-ryart-sobre {
+    width: 15%;
+    position: absolute;
+    margin: 150px 0 0 400px;
 }
 
 /* Services Section */
@@ -966,6 +973,11 @@ section {
     .filter-btn {
         white-space: nowrap;
     }
+
+    .logo-ryart-sobre {
+        width: 30%;
+        margin: 0px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -992,6 +1004,10 @@ section {
 
     section {
         padding: 60px 0;
+    }
+
+    .logo-ryart-sobre {
+        width: 45%;
     }
 }
 
