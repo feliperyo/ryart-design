@@ -118,13 +118,11 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Portfolio Filter
-const filterButtons = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-// Portfolio Show More/Less Functionality
+// Portfolio Filter and Show More/Less Functionality
 document.addEventListener('DOMContentLoaded', function () {
     const portfolioGrid = document.querySelector('.portfolio-grid');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const filterButtons = document.querySelectorAll('.filter-btn');
 
     // Create show more/less button
     const showMoreButton = document.createElement('div');
@@ -192,42 +190,70 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnIcon = showMoreBtn.querySelector('i');
 
     let isExpanded = false;
+    let currentFilter = 'all';
     const itemsToShow = 6; // Número de projetos visíveis inicialmente
 
-    // Initially hide items beyond the first 6
+    // Helper function to get filtered items
+    function getFilteredItems() {
+        return Array.from(portfolioItems).filter(item => {
+            return currentFilter === 'all' || item.getAttribute('data-category') === currentFilter;
+        });
+    }
+
+    // Initialize portfolio display
     function initializePortfolio() {
-        portfolioItems.forEach((item, index) => {
-            if (index >= itemsToShow) {
-                item.classList.add('hidden');
-            } else {
+        const filteredItems = getFilteredItems();
+
+        // Hide all items first
+        portfolioItems.forEach(item => {
+            item.classList.add('hidden');
+            item.classList.remove('show');
+        });
+
+        // Show only filtered items up to the limit
+        filteredItems.forEach((item, index) => {
+            if (index < itemsToShow) {
+                item.classList.remove('hidden');
                 item.classList.add('show');
             }
         });
+
+        // Show/hide the "show more" button based on filtered results
+        if (filteredItems.length > itemsToShow) {
+            showMoreButton.style.display = 'flex';
+        } else {
+            showMoreButton.style.display = 'none';
+        }
+
+        // Reset button state
+        isExpanded = false;
+        btnText.textContent = 'Ver Mais Projetos';
+        btnIcon.className = 'fas fa-chevron-down';
     }
 
     // Toggle show more/less
     function togglePortfolioItems() {
+        const filteredItems = getFilteredItems();
+
         if (!isExpanded) {
-            // Show more
-            portfolioItems.forEach((item, index) => {
-                if (index >= itemsToShow) {
-                    item.classList.remove('hidden');
-                    item.classList.add('show');
-                }
+            // Show more - display all filtered items
+            filteredItems.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('show');
             });
             btnText.textContent = 'Ver Menos Projetos';
-            btnIcon.className = 'fas fa-chevron-up'; // Muda para seta para cima
+            btnIcon.className = 'fas fa-chevron-up';
             isExpanded = true;
         } else {
-            // Show less
-            portfolioItems.forEach((item, index) => {
+            // Show less - display only first items
+            filteredItems.forEach((item, index) => {
                 if (index >= itemsToShow) {
                     item.classList.remove('show');
                     item.classList.add('hidden');
                 }
             });
             btnText.textContent = 'Ver Mais Projetos';
-            btnIcon.className = 'fas fa-chevron-down'; // Muda para seta para baixo
+            btnIcon.className = 'fas fa-chevron-down';
             isExpanded = false;
 
             // Scroll back to portfolio section smoothly
@@ -238,15 +264,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Event listener for button
+    // Event listener for show more/less button
     showMoreBtn.addEventListener('click', togglePortfolioItems);
 
-    // Initialize portfolio on load
-    initializePortfolio();
-
     // Portfolio filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all buttons
@@ -254,39 +275,19 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add active class to clicked button
             button.classList.add('active');
 
-            const filterValue = button.getAttribute('data-filter');
-            let visibleCount = 0;
+            // Update current filter
+            currentFilter = button.getAttribute('data-filter');
 
-            portfolioItems.forEach((item, index) => {
-                const shouldShow = filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+            // Reset expanded state when changing filters
+            isExpanded = false;
 
-                if (shouldShow) {
-                    if (!isExpanded && visibleCount >= itemsToShow) {
-                        item.classList.add('hidden');
-                        item.classList.remove('show');
-                    } else {
-                        item.classList.remove('hidden');
-                        item.classList.add('show');
-                    }
-                    visibleCount++;
-                } else {
-                    item.classList.add('hidden');
-                    item.classList.remove('show');
-                }
-            });
-
-            // Show/hide the "show more" button based on filtered results
-            const totalVisible = Array.from(portfolioItems).filter(item => {
-                return filterValue === 'all' || item.getAttribute('data-category') === filterValue;
-            }).length;
-
-            if (totalVisible > itemsToShow) {
-                showMoreButton.style.display = 'flex';
-            } else {
-                showMoreButton.style.display = 'none';
-            }
+            // Reinitialize portfolio with new filter
+            initializePortfolio();
         });
     });
+
+    // Initialize portfolio on load
+    initializePortfolio();
 });
 
 // Form Handling
