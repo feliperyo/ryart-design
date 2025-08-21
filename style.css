@@ -498,7 +498,7 @@ section {
 
 .logo-sobre {
     width: 80%;
-    margin-left: 50px;
+    margin: -75px 0 -50px 125px;
 }
 
 /* Services Section */
