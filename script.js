@@ -125,7 +125,6 @@ const portfolioItems = document.querySelectorAll('.portfolio-item');
 // Portfolio Show More/Less Functionality
 document.addEventListener('DOMContentLoaded', function () {
     const portfolioGrid = document.querySelector('.portfolio-grid');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
     // Create show more/less button
     const showMoreButton = document.createElement('div');
@@ -167,11 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         .btn-show-more i {
-            transition: transform 0.3s ease;
-        }
-        
-        .btn-show-more.expanded i {
-            transform: rotate(180deg);
+            transition: all 0.3s ease;
         }
         
         .portfolio-item.hidden {
@@ -221,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
             btnText.textContent = 'Ver Menos Projetos';
-            btnIcon.classList.add('expanded');
+            btnIcon.className = 'fas fa-chevron-up'; // Muda para seta para cima
             isExpanded = true;
         } else {
             // Show less
@@ -232,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
             btnText.textContent = 'Ver Mais Projetos';
-            btnIcon.classList.remove('expanded');
+            btnIcon.className = 'fas fa-chevron-down'; // Muda para seta para baixo
             isExpanded = false;
 
             // Scroll back to portfolio section smoothly
@@ -249,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize portfolio on load
     initializePortfolio();
 
-    // Update portfolio filter to work with show/hide functionality
+    // Portfolio filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
 
     filterButtons.forEach(button => {
@@ -294,57 +289,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-
-        const filterValue = button.getAttribute('data-filter');
-
-        portfolioItems.forEach(item => {
-            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                item.style.display = 'block';
-                item.style.animation = 'fadeInUp 0.5s ease forwards';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-});
-
 // Form Handling
 const contactForm = document.querySelector('.contact-form');
 const submitBtn = document.querySelector('.btn-submit');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm && submitBtn) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Get form data
-    const formData = new FormData(contactForm);
-    const formInputs = contactForm.querySelectorAll('input, textarea');
+        // Get form data
+        const formData = new FormData(contactForm);
+        const formInputs = contactForm.querySelectorAll('input, textarea');
 
-    // Simulate form submission
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-        // Reset form
-        contactForm.reset();
-        submitBtn.textContent = 'Mensagem Enviada!';
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        // Simulate form submission
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
 
         setTimeout(() => {
-            submitBtn.textContent = 'Enviar Mensagem';
-            submitBtn.style.background = 'var(--gradient-1)';
-            submitBtn.disabled = false;
-        }, 3000);
+            // Reset form
+            contactForm.reset();
+            submitBtn.textContent = 'Mensagem Enviada!';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
 
-        // Show success message
-        showNotification('Mensagem enviada com sucesso!', 'success');
-    }, 2000);
-});
+            setTimeout(() => {
+                submitBtn.textContent = 'Enviar Mensagem';
+                submitBtn.style.background = 'var(--gradient-1)';
+                submitBtn.disabled = false;
+            }, 3000);
+
+            // Show success message
+            showNotification('Mensagem enviada com sucesso!', 'success');
+        }, 2000);
+    });
+}
 
 // Notification System
 function showNotification(message, type = 'info') {
@@ -408,76 +385,24 @@ document.querySelectorAll('.service-card, .portfolio-item, .section-header').for
 });
 
 // Hero Buttons Functionality
-document.querySelector('.btn-primary').addEventListener('click', () => {
-    document.querySelector('#portfolio').scrollIntoView({
-        behavior: 'smooth'
+const btnPrimary = document.querySelector('.btn-primary');
+const btnSecondary = document.querySelector('.btn-secondary');
+
+if (btnPrimary) {
+    btnPrimary.addEventListener('click', () => {
+        document.querySelector('#portfolio').scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-});
+}
 
-document.querySelector('.btn-secondary').addEventListener('click', () => {
-    document.querySelector('#contact').scrollIntoView({
-        behavior: 'smooth'
+if (btnSecondary) {
+    btnSecondary.addEventListener('click', () => {
+        document.querySelector('#contact').scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-});
-
-// // Portfolio Modal (Optional Enhancement)
-// function createPortfolioModal() {
-//     const modal = document.createElement('div');
-//     modal.className = 'portfolio-modal';
-//     modal.innerHTML = `
-//         <div class="modal-content">
-//             <span class="close-modal">&times;</span>
-//             <img src="" alt="" class="modal-image">
-//             <div class="modal-info">
-//                 <h3 class="modal-title"></h3>
-//                 <p class="modal-description"></p>
-//                 <div class="modal-technologies"></div>
-//                 <a href="#" class="modal-link" target="_blank">Ver Site</a>
-//             </div>
-//         </div>
-//     `;
-
-//     modal.style.cssText = `
-//         display: none;
-//         position: fixed;
-//         z-index: 10000;
-//         left: 0;
-//         top: 0;
-//         width: 100%;
-//         height: 100%;
-//         background: rgba(0, 0, 0, 0.9);
-//         backdrop-filter: blur(10px);
-//     `;
-
-//     const modalContent = modal.querySelector('.modal-content');
-//     modalContent.style.cssText = `
-//         position: relative;
-//         margin: 5% auto;
-//         padding: 2rem;
-//         width: 80%;
-//         max-width: 800px;
-//         background: var(--dark-bg);
-//         border-radius: 20px;
-//         border: 1px solid rgba(255, 255, 255, 0.1);
-//     `;
-
-//     document.body.appendChild(modal);
-
-//     // Close modal functionality
-//     modal.querySelector('.close-modal').addEventListener('click', () => {
-//         modal.style.display = 'none';
-//     });
-
-//     modal.addEventListener('click', (e) => {
-//         if (e.target === modal) {
-//             modal.style.display = 'none';
-//         }
-//     });
-
-//     return modal;
-// }
-
-// const portfolioModal = createPortfolioModal();
+}
 
 // Add click events to portfolio items
 document.querySelectorAll('.portfolio-item').forEach((item, index) => {
@@ -486,10 +411,7 @@ document.querySelectorAll('.portfolio-item').forEach((item, index) => {
         const title = item.querySelector('.portfolio-overlay h3').textContent;
         const description = item.querySelector('.portfolio-overlay p').textContent;
 
-        portfolioModal.querySelector('.modal-image').src = img.src;
-        portfolioModal.querySelector('.modal-title').textContent = title;
-        portfolioModal.querySelector('.modal-description').textContent = description;
-        portfolioModal.style.display = 'block';
+        // Aqui você pode implementar um modal se desejar
     });
 });
 
@@ -596,9 +518,9 @@ const particleCSS = `
     }
 `;
 
-const style = document.createElement('style');
-style.textContent = particleCSS;
-document.head.appendChild(style);
+const particleStyle = document.createElement('style');
+particleStyle.textContent = particleCSS;
+document.head.appendChild(particleStyle);
 
 // Initialize particles
 createParticles();
@@ -633,17 +555,21 @@ window.addEventListener('scroll', throttle(() => {
     // Parallax and other scroll effects here
 }, 16)); // ~60fps
 
-document.getElementById("whatsappForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+// WhatsApp form handling
+const whatsappForm = document.getElementById("whatsappForm");
+if (whatsappForm) {
+    whatsappForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    let nome = document.getElementById("nome").value;
-    let email = document.getElementById("email").value;
-    let assunto = document.getElementById("assunto").value;
-    let mensagem = document.getElementById("mensagem").value;
+        let nome = document.getElementById("nome").value;
+        let email = document.getElementById("email").value;
+        let assunto = document.getElementById("assunto").value;
+        let mensagem = document.getElementById("mensagem").value;
 
-    let texto = `Olá! Me chamo ${nome}%0AEmail: ${email}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
+        let texto = `Olá! Me chamo ${nome}%0AEmail: ${email}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
 
-    let url = `https://wa.me/5511972821988?text=${texto}`; // coloque seu número no formato internacional
+        let url = `https://wa.me/5511972821988?text=${texto}`; // coloque seu número no formato internacional
 
-    window.open(url, "_blank");
-});
+        window.open(url, "_blank");
+    });
+}
