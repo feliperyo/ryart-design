@@ -815,7 +815,8 @@ section {
 }
 
 .footer-links a,
-.footer-services a {
+.footer-services a,
+.footer-contact a {
     color: var(--text-gray);
     text-decoration: none;
     transition: var(--transition);
@@ -823,14 +824,9 @@ section {
 }
 
 .footer-links a:hover,
-.footer-services a:hover {
+.footer-services a:hover,
+.footer-contact a:hover {
     color: var(--primary-color);
-}
-
-.footer-contact p {
-    color: var(--text-gray);
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
 }
 
 .footer-social {
