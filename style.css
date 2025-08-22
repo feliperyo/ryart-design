@@ -196,7 +196,7 @@ body {
     transition: var(--transition);
 }
 
-/* Hero Section */
+/* Hero Section with Unified Video Background */
 .hero {
     height: 100vh;
     position: relative;
@@ -206,23 +206,36 @@ body {
     overflow: hidden;
 }
 
-.hero-video {
+/* Single Video Background Styles */
+.video-bg {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-bg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: translate(-50%, -50%);
     z-index: -2;
 }
 
-.hero-overlay {
+/* Updated mask overlay with maximum opacity in center for perfect text readability */
+.mascara {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 35, 0.7);
+    background: radial-gradient(ellipse at center, rgba(15, 15, 35, 0.98) 0%, rgba(15, 15, 35, 0.95) 20%, rgba(15, 15, 35, 0.85) 40%, rgba(15, 15, 35, 0.65) 70%, rgba(15, 15, 35, 0.25) 100%);
     z-index: -1;
 }
 
@@ -231,6 +244,8 @@ body {
     z-index: 1;
     max-width: 800px;
     padding: 0 2rem;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-title {
@@ -328,6 +343,7 @@ body {
     font-size: 1.5rem;
     color: var(--text-gray);
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .hero-buttons {
@@ -487,26 +503,26 @@ section {
     font-size: 0.9rem;
 }
 
+.about-image {
+    position: relative;
+}
+
 .about-image img {
     width: 100%;
     border-radius: 20px;
     transition: var(--transition);
 }
 
-.parallax-element {
-    transition: transform 0.1s ease-out;
-}
-
 .logo-sobre {
     width: 80%;
-    margin: -75px 0 -50px 125px;
+    margin: -75px 0 -50px 0px;
     z-index: 99;
 }
 
 .logo-ryart-sobre {
-    width: 15%;
+    width: 2%;
     position: absolute;
-    margin: 150px 0 0 400px;
+    margin: 150px 0 0 250px;
 }
 
 /* Services Section */
@@ -888,6 +904,49 @@ section {
     color: #8b5cf6;
 }
 
+/* WhatsApp Float Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -979,6 +1038,11 @@ section {
         width: 30%;
         margin: 0px;
     }
+
+    /* Enhanced mask for mobile devices with ultra maximum opacity in center */
+    .mascara {
+        background: radial-gradient(ellipse at center, rgba(15, 15, 35, 0.99) 0%, rgba(15, 15, 35, 0.96) 15%, rgba(15, 15, 35, 0.88) 35%, rgba(15, 15, 35, 0.75) 60%, rgba(15, 15, 35, 0.35) 100%);
+    }
 }
 
 @media (max-width: 480px) {
@@ -1010,6 +1074,28 @@ section {
     .logo-ryart-sobre {
         width: 45%;
     }
+
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* Video Optimization - Reduce motion for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+    .video-bg video {
+        animation: none;
+    }
+
+    .glitch {
+        animation: none;
+    }
 }
 
 /* Animations */
@@ -1017,6 +1103,10 @@ section {
     from {
         opacity: 0;
         transform: translateY(50px);
+        -webkit-transform: translateY(50px);
+        -moz-transform: translateY(50px);
+        -ms-transform: translateY(50px);
+        -o-transform: translateY(50px);
     }
 
     to {
@@ -1056,6 +1146,10 @@ section {
 /* Smooth Transitions */
 * {
     transition: color 0.3s ease, background-color 0.3s ease;
+    -webkit-transition: color 0.3s ease, background-color 0.3s ease;
+    -moz-transition: color 0.3s ease, background-color 0.3s ease;
+    -ms-transition: color 0.3s ease, background-color 0.3s ease;
+    -o-transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Glow Effects */
