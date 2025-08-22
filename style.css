@@ -1,60 +1,58 @@
-/* Reset and Base Styles */
-* {
+/* Reset and Base Styles - Optimized */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --accent-color: #06b6d4;
+    --primary: #6366f1;
+    --secondary: #8b5cf6;
+    --accent: #06b6d4;
     --dark-bg: #0f0f23;
     --darker-bg: #070714;
-    --text-light: #ffffff;
+    --text-light: #fff;
     --text-gray: #94a3b8;
     --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
     --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
-    --gradient-3: linear-gradient(135deg, #f59e0b, #ef4444);
-    --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-glow: 0 0 30px rgba(99, 102, 241, .3);
+    --transition: all .3s cubic-bezier(.4, 0, .2, 1)
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     background: var(--dark-bg);
     color: var(--text-light);
     overflow-x: hidden;
-    line-height: 1.6;
+    line-height: 1.6
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px
 }
 
-/* Loading Screen */
+/* Critical Loading Screen - Minimal */
 #loading-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    inset: 0;
     background: var(--darker-bg);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10000;
-    transition: opacity 0.5s ease;
+    transition: opacity .5s
 }
 
 .loader {
-    perspective: 1000px;
+    perspective: 1000px
 }
 
 .cube {
@@ -62,7 +60,7 @@ body {
     height: 50px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateCube 2s infinite linear;
+    animation: rotateCube 2s infinite linear
 }
 
 .face {
@@ -70,53 +68,53 @@ body {
     width: 50px;
     height: 50px;
     background: var(--gradient-1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, .1)
 }
 
 .front {
-    transform: rotateY(0deg) translateZ(25px);
+    transform: rotateY(0) translateZ(25px)
 }
 
 .back {
-    transform: rotateY(180deg) translateZ(25px);
+    transform: rotateY(180deg) translateZ(25px)
 }
 
 .right {
-    transform: rotateY(90deg) translateZ(25px);
+    transform: rotateY(90deg) translateZ(25px)
 }
 
 .left {
-    transform: rotateY(-90deg) translateZ(25px);
+    transform: rotateY(-90deg) translateZ(25px)
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(25px);
+    transform: rotateX(90deg) translateZ(25px)
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(25px);
+    transform: rotateX(-90deg) translateZ(25px)
 }
 
 @keyframes rotateCube {
     0% {
-        transform: rotateX(0deg) rotateY(0deg);
+        transform: rotateX(0) rotateY(0)
     }
 
     100% {
-        transform: rotateX(360deg) rotateY(360deg);
+        transform: rotateX(360deg) rotateY(360deg)
     }
 }
 
-/* Navigation */
+/* Navigation - Optimized */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 15, 35, 0.9);
+    background: rgba(15, 15, 35, .9);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
     z-index: 1000;
-    transition: var(--transition);
+    will-change: transform
 }
 
 .nav-container {
@@ -125,19 +123,19 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px
 }
 
 .logo-img {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 50%
 }
 
 .logo-text {
@@ -146,13 +144,13 @@ body {
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2rem
 }
 
 .nav-link {
@@ -160,11 +158,11 @@ body {
     text-decoration: none;
     font-weight: 500;
     position: relative;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: var(--primary)
 }
 
 .nav-link::after {
@@ -175,17 +173,17 @@ body {
     width: 0;
     height: 2px;
     background: var(--gradient-1);
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .nav-link:hover::after {
-    width: 100%;
+    width: 100%
 }
 
 .hamburger {
     display: none;
     flex-direction: column;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .hamburger span {
@@ -193,28 +191,24 @@ body {
     height: 3px;
     background: var(--text-light);
     margin: 3px 0;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
-/* Hero Section with Unified Video Background */
+/* Hero Section - Performance Optimized */
 .hero {
     height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: hidden
 }
 
-/* Single Video Background Styles */
 .video-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: -2;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .video-bg video {
@@ -226,17 +220,15 @@ body {
     object-fit: cover;
     transform: translate(-50%, -50%);
     z-index: -2;
+    will-change: auto
 }
 
-/* Updated mask overlay with maximum opacity in center for perfect text readability */
+/* Optimized mask with better performance */
 .mascara {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(15, 15, 35, 0.98) 0%, rgba(15, 15, 35, 0.95) 20%, rgba(15, 15, 35, 0.85) 40%, rgba(15, 15, 35, 0.65) 70%, rgba(15, 15, 35, 0.25) 100%);
-    z-index: -1;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(15, 15, 35, .98) 0%, rgba(15, 15, 35, .95) 20%, rgba(15, 15, 35, .85) 40%, rgba(15, 15, 35, .65) 70%, rgba(15, 15, 35, .25) 100%);
+    z-index: -1
 }
 
 .hero-content {
@@ -245,20 +237,20 @@ body {
     max-width: 800px;
     padding: 0 2rem;
     position: relative;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8)
 }
 
 .hero-title {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.2
 }
 
 .glitch {
     position: relative;
     display: inline-block;
-    animation: glitch 2s infinite;
+    animation: glitch 2s infinite
 }
 
 .glitch::before,
@@ -268,42 +260,42 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%
 }
 
 .glitch::before {
-    color: #ff0000;
+    color: #f00;
     z-index: -1;
-    animation: glitch-1 0.5s infinite;
+    animation: glitch-1 .5s infinite
 }
 
 .glitch::after {
-    color: #00ff00;
+    color: #0f0;
     z-index: -2;
-    animation: glitch-2 0.5s infinite;
+    animation: glitch-2 .5s infinite
 }
 
 @keyframes glitch {
 
     0%,
     100% {
-        transform: translate(0);
+        transform: translate(0)
     }
 
     20% {
-        transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px)
     }
 
     40% {
-        transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px)
     }
 
     60% {
-        transform: translate(2px, 2px);
+        transform: translate(2px, 2px)
     }
 
     80% {
-        transform: translate(2px, -2px);
+        transform: translate(2px, -2px)
     }
 }
 
@@ -311,15 +303,15 @@ body {
 
     0%,
     100% {
-        transform: translate(0);
+        transform: translate(0)
     }
 
     10% {
-        transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px)
     }
 
     20% {
-        transform: translate(2px, 2px);
+        transform: translate(2px, 2px)
     }
 }
 
@@ -327,15 +319,15 @@ body {
 
     0%,
     100% {
-        transform: translate(0);
+        transform: translate(0)
     }
 
     10% {
-        transform: translate(2px, -2px);
+        transform: translate(2px, -2px)
     }
 
     20% {
-        transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px)
     }
 }
 
@@ -343,14 +335,14 @@ body {
     font-size: 1.5rem;
     color: var(--text-gray);
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .8)
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .btn-primary,
@@ -363,36 +355,36 @@ body {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .btn-primary {
     background: var(--gradient-1);
     color: var(--text-light);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-glow)
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 40px rgba(99, 102, 241, .4)
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--text-light);
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--primary)
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    transform: translateY(-3px);
+    background: var(--primary);
+    transform: translateY(-3px)
 }
 
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%)
 }
 
 .mouse {
@@ -400,7 +392,7 @@ body {
     height: 40px;
     border: 2px solid var(--text-light);
     border-radius: 15px;
-    position: relative;
+    position: relative
 }
 
 .wheel {
@@ -412,33 +404,33 @@ body {
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
-    animation: scroll 2s infinite;
+    animation: scroll 2s infinite
 }
 
 @keyframes scroll {
     0% {
         transform: translateX(-50%) translateY(0);
-        opacity: 0;
+        opacity: 0
     }
 
     50% {
-        opacity: 1;
+        opacity: 1
     }
 
     100% {
         transform: translateX(-50%) translateY(10px);
-        opacity: 0;
+        opacity: 0
     }
 }
 
-/* Section Styles */
+/* Sections - Optimized */
 section {
-    padding: 100px 0;
+    padding: 100px 0
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 4rem
 }
 
 .section-title {
@@ -448,104 +440,104 @@ section {
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text
 }
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--text-gray);
+    color: var(--text-gray)
 }
 
 /* About Section */
 .about {
     background: var(--darker-bg);
-    overflow-x: hidden;
+    overflow-x: hidden
 }
 
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: center
 }
 
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--text-light);
+    color: var(--text-light)
 }
 
 .about-text p {
     color: var(--text-gray);
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2rem
 }
 
 .stat {
-    text-align: center;
+    text-align: center
 }
 
 .stat-number {
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary)
 }
 
 .stat-label {
     color: var(--text-gray);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .about-image {
-    position: relative;
+    position: relative
 }
 
 .about-image img {
     width: 100%;
     border-radius: 20px;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .logo-sobre {
     width: 80%;
     margin: -75px 0 -50px 0px;
-    z-index: 99;
+    z-index: 99
 }
 
 .logo-ryart-sobre {
-    width: 2%;
+    width: 5%;
     position: absolute;
-    margin: 150px 0 0 250px;
+    margin: 150px 0 0 200px
 }
 
-/* Services Section */
+/* Services */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2rem
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, .05);
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
     transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px)
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, .2);
+    border-color: var(--primary)
 }
 
 .service-icon {
@@ -554,22 +546,22 @@ section {
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text
 }
 
 .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--text-light);
+    color: var(--text-light)
 }
 
 .service-card p {
-    color: var(--text-gray);
+    color: var(--text-gray)
 }
 
-/* Portfolio Section */
+/* Portfolio */
 .portfolio {
-    background: var(--darker-bg);
+    background: var(--darker-bg)
 }
 
 .portfolio-filter {
@@ -577,31 +569,31 @@ section {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .filter-btn {
-    padding: 0.8rem 1.5rem;
+    padding: .8rem 1.5rem;
     background: transparent;
     color: var(--text-gray);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, .2);
     border-radius: 25px;
     cursor: pointer;
     transition: var(--transition);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .filter-btn:hover,
 .filter-btn.active {
     background: var(--gradient-1);
     color: var(--text-light);
-    border-color: transparent;
+    border-color: transparent
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2rem
 }
 
 .portfolio-item {
@@ -610,23 +602,20 @@ section {
     overflow: hidden;
     aspect-ratio: 4/3;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .portfolio-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .portfolio-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(99, 102, 241, 0.9);
+    inset: 0;
+    background: rgba(99, 102, 241, .9);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -634,56 +623,56 @@ section {
     opacity: 0;
     transition: var(--transition);
     text-align: center;
-    padding: 2rem;
+    padding: 2rem
 }
 
 .portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
+    opacity: 1
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.1)
 }
 
 .portfolio-overlay h3 {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .portfolio-overlay p {
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, .8)
 }
 
 .btn-view {
-    padding: 0.8rem 1.5rem;
+    padding: .8rem 1.5rem;
     background: var(--text-light);
-    color: var(--primary-color);
+    color: var(--primary);
     border: none;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
-    text-decoration: none;
+    text-decoration: none
 }
 
 .btn-view:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3)
 }
 
-/* Contact Section */
+/* Contact */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: start
 }
 
 .contact-info h3 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--text-light);
+    color: var(--text-light)
 }
 
 .contact-item {
@@ -691,19 +680,19 @@ section {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    color: var(--text-gray);
+    color: var(--text-gray)
 }
 
 .contact-item i {
     font-size: 1.2rem;
-    color: var(--primary-color);
-    width: 20px;
+    color: var(--primary);
+    width: 20px
 }
 
 .social-links {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 2rem
 }
 
 .social-links a {
@@ -717,55 +706,55 @@ section {
     border-radius: 50%;
     text-decoration: none;
     transition: var(--transition);
-    font-size: 1.2rem;
+    font-size: 1.2rem
 }
 
 .social-links a:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-glow)
 }
 
 .contact-form {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, .05);
     padding: 2rem;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, .1)
 }
 
 .form-group {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .form-group input,
 .form-group textarea {
     flex: 1;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .2);
     border-radius: 10px;
     color: var(--text-light);
     font-family: inherit;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .1)
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: var(--text-gray);
+    color: var(--text-gray)
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 120px
 }
 
 .btn-submit {
@@ -778,46 +767,46 @@ section {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition)
 }
 
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-glow)
 }
 
 /* Footer */
 .footer {
     background: var(--darker-bg);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, .1)
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-    padding: 3rem 0;
+    padding: 3rem 0
 }
 
 .footer-logo img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .footer-logo h3 {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text
 }
 
 .footer-logo p {
     color: var(--text-gray);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .footer-links h4,
@@ -825,17 +814,17 @@ section {
 .footer-contact h4 {
     color: var(--text-light);
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem
 }
 
 .footer-links ul,
 .footer-services ul {
-    list-style: none;
+    list-style: none
 }
 
 .footer-links li,
 .footer-services li {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .footer-links a,
@@ -844,25 +833,25 @@ section {
     color: var(--text-gray);
     text-decoration: none;
     transition: var(--transition);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .footer-links a:hover,
 .footer-services a:hover,
 .footer-contact a:hover {
-    color: var(--primary-color);
+    color: var(--primary)
 }
 
 .footer-social {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: .5rem;
+    margin-top: 1rem
 }
 
 .footer-social a {
     width: 35px;
     height: 35px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, .1);
     color: var(--text-light);
     display: flex;
     align-items: center;
@@ -870,46 +859,42 @@ section {
     border-radius: 50%;
     text-decoration: none;
     transition: var(--transition);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .footer-social a:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
+    background: var(--primary);
+    transform: translateY(-2px)
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, .1);
     padding: 1.5rem 0;
-    text-align: center;
+    text-align: center
 }
 
 .footer-bottom p {
     color: var(--text-gray);
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .link-ryart {
     width: 100%;
     color: #94a3b8;
     text-decoration: none;
-    transition: .3s;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -ms-transition: .3s;
-    -o-transition: .3s;
+    transition: .3s
 }
 
 .link-ryart:hover {
-    color: #8b5cf6;
+    color: #8b5cf6
 }
 
-/* WhatsApp Float Button */
+/* WhatsApp Float - Optimized */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 1000
 }
 
 .whatsapp-float a {
@@ -920,37 +905,37 @@ section {
     height: 60px;
     background: #25d366;
     border-radius: 50%;
-    color: white;
+    color: #fff;
     font-size: 30px;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
     transition: var(--transition);
-    animation: pulse 2s infinite;
+    animation: pulse 2s infinite
 }
 
 .whatsapp-float a:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, .6)
 }
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 4px 20px rgba(37, 211, 102, .4)
     }
 
     50% {
-        box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+        box-shadow: 0 4px 30px rgba(37, 211, 102, .7)
     }
 
     100% {
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 4px 20px rgba(37, 211, 102, .4)
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive - Mobile First Approach */
+@media (max-width:768px) {
     .hamburger {
-        display: flex;
+        display: flex
     }
 
     .nav-menu {
@@ -958,212 +943,193 @@ section {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: rgba(15, 15, 35, 0.95);
+        background: rgba(15, 15, 35, .95);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: .3s;
         backdrop-filter: blur(20px);
-        padding: 2rem 0;
+        padding: 2rem 0
     }
 
     .nav-menu.active {
-        left: 0;
+        left: 0
     }
 
     .nav-menu li {
-        margin: 1rem 0;
+        margin: 1rem 0
     }
 
     .hamburger.active span:nth-child(2) {
-        opacity: 0;
+        opacity: 0
     }
 
     .hamburger.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
+        transform: translateY(9px) rotate(45deg)
     }
 
     .hamburger.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
+        transform: translateY(-9px) rotate(-45deg)
     }
 
     .hero-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: center
     }
 
     .btn-primary,
     .btn-secondary {
-        width: 200px;
+        width: 200px
     }
 
     .about-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2rem
     }
 
     .stats {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1rem
     }
 
     .contact-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2rem
     }
 
     .form-group {
-        flex-direction: column;
+        flex-direction: column
     }
 
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 2rem
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 2rem
     }
 
     .portfolio-filter {
         justify-content: flex-start;
         overflow-x: auto;
-        padding-bottom: 1rem;
+        padding-bottom: 1rem
     }
 
     .filter-btn {
-        white-space: nowrap;
+        white-space: nowrap
     }
 
     .logo-ryart-sobre {
         width: 30%;
-        margin: 0px;
+        margin: 0
     }
 
-    /* Enhanced mask for mobile devices with ultra maximum opacity in center */
     .mascara {
-        background: radial-gradient(ellipse at center, rgba(15, 15, 35, 0.99) 0%, rgba(15, 15, 35, 0.96) 15%, rgba(15, 15, 35, 0.88) 35%, rgba(15, 15, 35, 0.75) 60%, rgba(15, 15, 35, 0.35) 100%);
+        background: radial-gradient(ellipse at center, rgba(15, 15, 35, .99) 0%, rgba(15, 15, 35, .96) 15%, rgba(15, 15, 35, .88) 35%, rgba(15, 15, 35, .75) 60%, rgba(15, 15, 35, .35) 100%)
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width:480px) {
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.5rem
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.2rem
     }
 
     .services-grid,
     .portfolio-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 
     .nav-container {
-        padding: 1rem;
+        padding: 1rem
     }
 
     section {
-        padding: 60px 0;
+        padding: 60px 0
     }
 
     .logo-ryart-sobre {
-        width: 45%;
+        width: 45%
     }
 
     .whatsapp-float {
         bottom: 15px;
-        right: 15px;
+        right: 15px
     }
 
     .whatsapp-float a {
         width: 50px;
         height: 50px;
-        font-size: 24px;
+        font-size: 24px
     }
 }
 
-/* Video Optimization - Reduce motion for users with motion sensitivity */
-@media (prefers-reduced-motion: reduce) {
-    .video-bg video {
-        animation: none;
-    }
+/* Performance Optimizations */
+@media (prefers-reduced-motion:reduce) {
 
+    .video-bg video,
     .glitch {
-        animation: none;
+        animation: none
     }
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-        -webkit-transform: translateY(50px);
-        -moz-transform: translateY(50px);
-        -ms-transform: translateY(50px);
-        -o-transform: translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in-up {
-    animation: fadeInUp 1s ease forwards;
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--darker-bg);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--gradient-1);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gradient-2);
-}
-
-/* Selection Styling */
-::selection {
-    background: var(--primary-color);
-    color: var(--text-light);
-}
-
-/* Smooth Transitions */
-* {
-    transition: color 0.3s ease, background-color 0.3s ease;
-    -webkit-transition: color 0.3s ease, background-color 0.3s ease;
-    -moz-transition: color 0.3s ease, background-color 0.3s ease;
-    -ms-transition: color 0.3s ease, background-color 0.3s ease;
-    -o-transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-/* Glow Effects */
-.glow {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
 }
 
 /* Utility Classes */
 .hidden {
     opacity: 0;
-    visibility: hidden;
+    visibility: hidden
 }
 
 .visible {
     opacity: 1;
-    visibility: visible;
+    visibility: visible
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg)
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-1);
+    border-radius: 4px
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-2)
+}
+
+::selection {
+    background: var(--primary);
+    color: var(--text-light)
+}
+
+.glow {
+    box-shadow: 0 0 20px rgba(99, 102, 241, .5)
 }
