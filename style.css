@@ -932,6 +932,14 @@ section {
     }
 }
 
+
+@media (max-width:1030px) {
+
+    .logo-ryart-sobre {
+        display: none;
+    }
+}
+
 /* Responsive - Mobile First Approach */
 @media (max-width:768px) {
     .hamburger {
@@ -1019,11 +1027,6 @@ section {
         white-space: nowrap
     }
 
-    .logo-ryart-sobre {
-        width: 30%;
-        margin: 0
-    }
-
     .mascara {
         background: radial-gradient(ellipse at center, rgba(15, 15, 35, .99) 0%, rgba(15, 15, 35, .96) 15%, rgba(15, 15, 35, .88) 35%, rgba(15, 15, 35, .75) 60%, rgba(15, 15, 35, .35) 100%)
     }
@@ -1055,8 +1058,8 @@ section {
         padding: 60px 0
     }
 
-    .logo-ryart-sobre {
-        width: 45%
+    .logo-sobre {
+        margin: 0px 0 -50px 0px;
     }
 
     .whatsapp-float {
