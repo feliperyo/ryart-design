@@ -569,7 +569,7 @@ if (whatsappForm) {
 
         let texto = `Olá! Me chamo ${nome}%0AEmail: ${email}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
 
-        let url = `https://wa.me/5511972821988?text=${texto}`; // coloque seu número no formato internacional
+        let url = `https://wa.me/5511916115198?text=${texto}`; // coloque seu número no formato internacional
 
         window.open(url, "_blank");
     });
