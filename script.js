@@ -1,12 +1,20 @@
-// Loading Screen
+// Loading Screen - otimizado para carregar mais rápido
 window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loading-screen');
+    // Reduzido de 1500ms para 300ms para melhor UX
     setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
-        }, 500);
-    }, 1500);
+        }, 300);
+    }, 300);
+
+    // Carregar vídeo de hero de forma inteligente
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        heroVideo.preload = 'metadata';
+        heroVideo.load();
+    }
 });
 
 // Mobile Navigation
@@ -40,36 +48,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Background on Scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 15, 35, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(15, 15, 35, 0.9)';
-    }
-});
-
-// Active Navigation Link
+// Scroll handler otimizado - combina navbar e navigation em um único listener
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-link');
+const navbar = document.querySelector('.navbar');
 
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+    if (!scrollTicking) {
+        requestAnimationFrame(() => {
+            // Navbar Background
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 15, 35, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(15, 15, 35, 0.9)';
+            }
 
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === `#${current}`) {
-            item.classList.add('active');
-        }
-    });
+            // Active Navigation Link
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+
+            scrollTicking = false;
+        });
+        scrollTicking = true;
+    }
 });
 
 // Counter Animation for Stats
@@ -106,17 +120,29 @@ document.querySelectorAll('.stat-number').forEach(counter => {
     counterObserver.observe(counter);
 });
 
-// Parallax Effect
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.parallax-element');
-
-    parallaxElements.forEach(element => {
-        const speed = element.dataset.speed || 0.5;
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
+// Lazy loading para imagens pesadas (como o GIF de 51MB)
+const lazyImageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            }
+            lazyImageObserver.unobserve(img);
+        }
     });
+}, {
+    threshold: 0.1,
+    rootMargin: '200px 0px'
 });
+
+document.querySelectorAll('img[data-src]').forEach(img => {
+    lazyImageObserver.observe(img);
+});
+
+// Parallax Effect - desativado para melhorar performance
+// (não há elementos .parallax-element no HTML atual)
 
 // Portfolio Filter and Show More/Less Functionality
 document.addEventListener('DOMContentLoaded', function () {
@@ -442,24 +468,32 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
-// Mouse Move Parallax Effect
+// Mouse Move Parallax Effect - otimizado com throttle e apenas para service-cards
+let mouseMoveThrottle = false;
 document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.service-card, .portfolio-item');
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+    if (mouseMoveThrottle) return;
+    mouseMoveThrottle = true;
 
-    cards.forEach(card => {
-        const speed = 5;
-        const rotateX = (y - 0.5) * speed;
-        const rotateY = (x - 0.5) * speed;
+    requestAnimationFrame(() => {
+        // Apenas service-cards (não portfolio-items para melhor performance)
+        const cards = document.querySelectorAll('.service-card');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        cards.forEach(card => {
+            const speed = 5;
+            const rotateX = (y - 0.5) * speed;
+            const rotateY = (x - 0.5) * speed;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        mouseMoveThrottle = false;
     });
 });
 
 // Reset card transforms when mouse leaves
 document.addEventListener('mouseleave', () => {
-    const cards = document.querySelectorAll('.service-card, .portfolio-item');
+    const cards = document.querySelectorAll('.service-card');
     cards.forEach(card => {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     });
@@ -480,7 +514,7 @@ function createParticles() {
         overflow: hidden;
     `;
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 15; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.cssText = `
@@ -526,35 +560,10 @@ document.head.appendChild(particleStyle);
 // Initialize particles
 createParticles();
 
-// Glitch effect trigger
-setInterval(() => {
-    const glitchElements = document.querySelectorAll('.glitch');
-    glitchElements.forEach(element => {
-        element.style.animation = 'none';
-        setTimeout(() => {
-            element.style.animation = 'glitch 0.5s ease-in-out';
-        }, 10);
-    });
-}, 5000);
+// Glitch effect trigger - removido intervalo contínuo para melhorar performance
+// O efeito glitch já está definido no CSS e será aplicado uma vez
 
-// Performance optimization - Throttle scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function () {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-}
-
-// Apply throttling to scroll events
-window.addEventListener('scroll', throttle(() => {
-    // Parallax and other scroll effects here
-}, 16)); // ~60fps
+// Performance optimization - throttle já aplicado via requestAnimationFrame nos handlers acima
 
 // WhatsApp form handling
 const whatsappForm = document.getElementById("whatsappForm");

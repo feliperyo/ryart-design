@@ -19,6 +19,11 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Preconnect para carregar fontes mais rápido -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -64,11 +69,9 @@
     <section id="home" class="hero">
         <!-- Single Video Background for All Devices -->
         <div class="video-bg">
-            <video alt="video de fundo" autoplay muted loop playsinline preload="metadata">
+            <video id="hero-video" alt="video de fundo" autoplay muted loop playsinline preload="none">
                 <source src="./assets/video-bg/video-bg.mp4" type="video/mp4">
                 <source src="./assets/video-bg/video-bg.webm" type="video/webm">
-                <source src="./assets/video-bg/video-bg.mov" type="video/mov">
-                <source src="./assets/video-bg/video-bg.ogg" type="video/ogg">
                 Seu navegador não suporta tag de vídeo HTML5.
             </video>
             <div class="mascara"></div>
@@ -123,8 +126,8 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img class="logo-ryart-sobre" src="./assets/logo.png" alt="Logo">
-                    <img class="logo-sobre" src="./assets/mockup-celular.gif" alt="Sobre RyArt Design">
+                    <img class="logo-ryart-sobre" src="./assets/logo.png" alt="Logo" loading="lazy">
+                    <img class="logo-sobre" data-src="./assets/mockup-celular.gif" alt="Sobre RyArt Design" loading="lazy">
                 </div>
             </div>
         </div>
@@ -203,7 +206,7 @@
             <div class="portfolio-grid">
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/vester-venda.webp" alt="Vester">
+                    <img loading="lazy" src="./assets/projects/video/vester-venda.webp" alt="Vester">
                     <div class="portfolio-overlay">
                         <h3>Vester</h3>
                         <p>Edição de vídeo</p>
@@ -213,7 +216,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/video-bf-ryoink.webp" alt="Ryo Ink">
+                    <img loading="lazy" src="./assets/projects/video/video-bf-ryoink.webp" alt="Ryo Ink">
                     <div class="portfolio-overlay">
                         <h3>Ryo Ink</h3>
                         <p>Edição de vídeo</p>
@@ -223,7 +226,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/video-venda-ryart.webp" alt="RyArt Design">
+                    <img loading="lazy" src="./assets/projects/video/video-venda-ryart.webp" alt="RyArt Design">
                     <div class="portfolio-overlay">
                         <h3>RyArt Design</h3>
                         <p>Edição de vídeo</p>
@@ -234,7 +237,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/video-venda-mra.webp" alt="Mra Natação">
+                    <img loading="lazy" src="./assets/projects/video/video-venda-mra.webp" alt="Mra Natação">
                     <div class="portfolio-overlay">
                         <h3>Mra Natação</h3>
                         <p>Edição de vídeo</p>
@@ -244,7 +247,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/pdrnskin.webp" alt="PDRNskin">
+                    <img loading="lazy" src="./assets/projects/site/pdrnskin.webp" alt="PDRNskin">
                     <div class="portfolio-overlay">
                         <h3>PDRNskin Landing Page</h3>
                         <p>Landing Page com E-commerce Completo</p>
@@ -254,7 +257,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/nihon.webp" alt="Nihon Corretora de Seguros">
+                    <img loading="lazy" src="./assets/projects/site/nihon.webp" alt="Nihon Corretora de Seguros">
                     <div class="portfolio-overlay">
                         <h3>Nihon Corretora de Seguros</h3>
                         <p>Site institucional moderno</p>
@@ -264,7 +267,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/portfolio-img.webp" alt="Portfólio Recrutador">
+                    <img loading="lazy" src="./assets/projects/site/portfolio-img.webp" alt="Portfólio Recrutador">
                     <div class="portfolio-overlay">
                         <h3>Portfólio Recrutador</h3>
                         <p>Portfólio Profissional para Recrutadores</p>
@@ -274,7 +277,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/mra-video.webp" alt="Mra Natação">
+                    <img loading="lazy" src="./assets/projects/video/mra-video.webp" alt="Mra Natação">
                     <div class="portfolio-overlay">
                         <h3>Mra Natação</h3>
                         <p>Edição de vídeo</p>
@@ -284,7 +287,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/renovar-img.webp" alt="Renovar Corretora">
+                    <img loading="lazy" src="./assets/projects/site/renovar-img.webp" alt="Renovar Corretora">
                     <div class="portfolio-overlay">
                         <h3>Renovar Corretora</h3>
                         <p>Site institucional moderno</p>
@@ -293,7 +296,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/mockup-renovar.webp" alt="Renovar Corretora">
+                    <img loading="lazy" src="./assets/projects/identidade/mockup-renovar.webp" alt="Renovar Corretora">
                     <div class="portfolio-overlay">
                         <h3>Renovar Corretora</h3>
                         <p>Mockup da Identidade Visual da Renovar Corretora</p>
@@ -303,7 +306,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/logo-renovar.webp" alt="Renovar Corretora">
+                    <img loading="lazy" src="./assets/projects/identidade/logo-renovar.webp" alt="Renovar Corretora">
                     <div class="portfolio-overlay">
                         <h3>Renovar Corretora</h3>
                         <p>Logo Renovar Corretora</p>
@@ -313,7 +316,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/no8-img.webp" alt="Studio NO-8">
+                    <img loading="lazy" src="./assets/projects/site/no8-img.webp" alt="Studio NO-8">
                     <div class="portfolio-overlay">
                         <h3>Studio NO-8</h3>
                         <p>Site para Escola de Dança Renomada</p>
@@ -323,7 +326,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="photo">
-                    <img src="./assets/projects/foto/foto1-casamento.webp" alt="Edição Casamento">
+                    <img loading="lazy" src="./assets/projects/foto/foto1-casamento.webp" alt="Edição Casamento">
                     <div class="portfolio-overlay">
                         <h3>Edição Casamento</h3>
                         <p>Edição e tratamento de Foto</p>
@@ -333,7 +336,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="photo">
-                    <img src="./assets/projects/foto/foto3-casamento.webp" alt="Edição Casamento">
+                    <img loading="lazy" src="./assets/projects/foto/foto3-casamento.webp" alt="Edição Casamento">
                     <div class="portfolio-overlay">
                         <h3>Edição Casamento</h3>
                         <p>Edição e tratamento de Foto</p>
@@ -343,7 +346,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="photo">
-                    <img src="./assets/projects/foto/foto2-casamento.webp" alt="Edição Casamento">
+                    <img loading="lazy" src="./assets/projects/foto/foto2-casamento.webp" alt="Edição Casamento">
                     <div class="portfolio-overlay">
                         <h3>Edição Casamento</h3>
                         <p>Edição e tratamento de Foto</p>
@@ -353,7 +356,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-renovar.webp" alt="Renovar Corretora">
+                    <img loading="lazy" src="./assets/projects/layout/layout-renovar.webp" alt="Renovar Corretora">
                     <div class="portfolio-overlay">
                         <h3>Renovar Corretora</h3>
                         <p>Layout para Site</p>
@@ -363,7 +366,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/japanese-food-img.webp" alt="Japanese Food">
+                    <img loading="lazy" src="./assets/projects/site/japanese-food-img.webp" alt="Japanese Food">
                     <div class="portfolio-overlay">
                         <h3>Japanese Food</h3>
                         <p>Cardápio Online</p>
@@ -373,7 +376,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/skate-world-img.webp" alt="Skate World">
+                    <img loading="lazy" src="./assets/projects/site/skate-world-img.webp" alt="Skate World">
                     <div class="portfolio-overlay">
                         <h3>Skate World</h3>
                         <p>Interface com efeito visual de rolagem</p>
@@ -383,7 +386,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-c.collection.webp" alt="C.Collection">
+                    <img loading="lazy" src="./assets/projects/layout/layout-c.collection.webp" alt="C.Collection">
                     <div class="portfolio-overlay">
                         <h3>C.Collection</h3>
                         <p>Layout para Site</p>
@@ -394,7 +397,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-agropopiedades.webp" alt="Agro Propiedades">
+                    <img loading="lazy" src="./assets/projects/layout/layout-agropopiedades.webp" alt="Agro Propiedades">
                     <div class="portfolio-overlay">
                         <h3>Agro Propiedades</h3>
                         <p>Layout para Site</p>
@@ -405,7 +408,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/logo-agropropiedades.webp" alt="Agro Propiedades">
+                    <img loading="lazy" src="./assets/projects/identidade/logo-agropropiedades.webp" alt="Agro Propiedades">
                     <div class="portfolio-overlay">
                         <h3>Agro Propiedades</h3>
                         <p>Logo/Identidade Visual</p>
@@ -415,7 +418,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/tesla-img.webp" alt="Tesla">
+                    <img loading="lazy" src="./assets/projects/site/tesla-img.webp" alt="Tesla">
                     <div class="portfolio-overlay">
                         <h3>Tesla</h3>
                         <p>Interface com efeito visual de rolagem</p>
@@ -425,7 +428,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-rifa.webp" alt="Rifa Online">
+                    <img loading="lazy" src="./assets/projects/layout/layout-rifa.webp" alt="Rifa Online">
                     <div class="portfolio-overlay">
                         <h3>Rifa Online</h3>
                         <p>Layout para Site</p>
@@ -435,7 +438,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/mra-img.webp" alt="MRA Natação">
+                    <img loading="lazy" src="./assets/projects/site/mra-img.webp" alt="MRA Natação">
                     <div class="portfolio-overlay">
                         <h3>MRA Natação</h3>
                         <p>Página de Venda de Curso de Natação</p>
@@ -445,7 +448,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-amazoninter.webp" alt="Amazônia Inter">
+                    <img loading="lazy" src="./assets/projects/layout/layout-amazoninter.webp" alt="Amazônia Inter">
                     <div class="portfolio-overlay">
                         <h3>Amazônia Inter</h3>
                         <p>Layout para Site</p>
@@ -455,7 +458,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/camiseta-mra.webp" alt="MRA Natação">
+                    <img loading="lazy" src="./assets/projects/art/camiseta-mra.webp" alt="MRA Natação">
                     <div class="portfolio-overlay">
                         <h3>MRA Natação</h3>
                         <p>Arte Digital para estampa de camiseta</p>
@@ -466,7 +469,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/cardapio-online-img.webp" alt="Skate World">
+                    <img loading="lazy" src="./assets/projects/site/cardapio-online-img.webp" alt="Skate World">
                     <div class="portfolio-overlay">
                         <h3>Cardápio Online</h3>
                         <p>Cardápio Online</p>
@@ -476,7 +479,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-paineldecontrole.webp" alt="Painel de Controle Ótica">
+                    <img loading="lazy" src="./assets/projects/layout/layout-paineldecontrole.webp" alt="Painel de Controle Ótica">
                     <div class="portfolio-overlay">
                         <h3>Painel de Controle Ótica</h3>
                         <p>Layout para Painel Administrativo de Site de Ótica</p>
@@ -486,7 +489,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-cells.webp" alt="Celws Serviços">
+                    <img loading="lazy" src="./assets/projects/layout/layout-cells.webp" alt="Celws Serviços">
                     <div class="portfolio-overlay">
                         <h3>Celws Serviços</h3>
                         <p>Layout para Site</p>
@@ -496,7 +499,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/mario-img.webp" alt="Mario Brothers">
+                    <img loading="lazy" src="./assets/projects/site/mario-img.webp" alt="Mario Brothers">
                     <div class="portfolio-overlay">
                         <h3>Mario Brothers</h3>
                         <p>Interface chamativa para Venda de Serviço</p>
@@ -506,7 +509,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/coffe-img.webp" alt="Coffee Page">
+                    <img loading="lazy" src="./assets/projects/site/coffe-img.webp" alt="Coffee Page">
                     <div class="portfolio-overlay">
                         <h3>Coffee Page</h3>
                         <p>Interface para Cafeteria</p>
@@ -516,7 +519,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/yoga-img.webp" alt="Yoga">
+                    <img loading="lazy" src="./assets/projects/site/yoga-img.webp" alt="Yoga">
                     <div class="portfolio-overlay">
                         <h3>Yoga</h3>
                         <p>Interface elegante para Yoga</p>
@@ -526,7 +529,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-colinhodemaria.webp" alt="Colinho de Maria">
+                    <img loading="lazy" src="./assets/projects/layout/layout-colinhodemaria.webp" alt="Colinho de Maria">
                     <div class="portfolio-overlay">
                         <h3>Colinho de Maria</h3>
                         <p>Layout para Site</p>
@@ -536,7 +539,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/pezinho-tattoo.webp" alt="Desenho Digital Pezinho">
+                    <img loading="lazy" src="./assets/projects/art/pezinho-tattoo.webp" alt="Desenho Digital Pezinho">
                     <div class="portfolio-overlay">
                         <h3>Desenho Digital Pezinho</h3>
                         <p>Criação e edição de desenho e vídeo de apresentação</p>
@@ -546,7 +549,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/tattoo-barber-img.webp" alt="Tattoo e Barbearia">
+                    <img loading="lazy" src="./assets/projects/site/tattoo-barber-img.webp" alt="Tattoo e Barbearia">
                     <div class="portfolio-overlay">
                         <h3>Tattoo e Barbearia</h3>
                         <p>Interface com efeito visual de rolagem</p>
@@ -556,7 +559,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/carshow-img.webp" alt="Car Show">
+                    <img loading="lazy" src="./assets/projects/site/carshow-img.webp" alt="Car Show">
                     <div class="portfolio-overlay">
                         <h3>Car Show</h3>
                         <p>Interface com efeito para vitrine</p>
@@ -566,7 +569,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/guia-turistico-img.webp" alt="Guia Turístico">
+                    <img loading="lazy" src="./assets/projects/site/guia-turistico-img.webp" alt="Guia Turístico">
                     <div class="portfolio-overlay">
                         <h3>Guia Turístico</h3>
                         <p>Interface com efeito para vitrine</p>
@@ -576,7 +579,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/itau-img.webp" alt="Itaú">
+                    <img loading="lazy" src="./assets/projects/site/itau-img.webp" alt="Itaú">
                     <div class="portfolio-overlay">
                         <h3>Itaú</h3>
                         <p>Landing Page Itaú</p>
@@ -586,7 +589,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/helmet-img.webp" alt="Rocketeer Helmets">
+                    <img loading="lazy" src="./assets/projects/site/helmet-img.webp" alt="Rocketeer Helmets">
                     <div class="portfolio-overlay">
                         <h3>Rocketeer Helmets</h3>
                         <p>Interface Futurista</p>
@@ -596,7 +599,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-barbershop.webp" alt="Barber Shop">
+                    <img loading="lazy" src="./assets/projects/layout/layout-barbershop.webp" alt="Barber Shop">
                     <div class="portfolio-overlay">
                         <h3>Barber Shop</h3>
                         <p>Layout para site</p>
@@ -606,7 +609,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="site">
-                    <img src="./assets/projects/site/barbershop-img.webp" alt="Barber Shop">
+                    <img loading="lazy" src="./assets/projects/site/barbershop-img.webp" alt="Barber Shop">
                     <div class="portfolio-overlay">
                         <h3>Barber Shop</h3>
                         <p>Interface Simples</p>
@@ -616,7 +619,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/stitch-tattoo.webp" alt="Desenho Manual e Digital Stitch e Pikachu">
+                    <img loading="lazy" src="./assets/projects/art/stitch-tattoo.webp" alt="Desenho Manual e Digital Stitch e Pikachu">
                     <div class="portfolio-overlay">
                         <h3>Desenho Manual e Digital Stitch e Pikachu</h3>
                         <p>Criação e edição de desenho e vídeo de apresentação</p>
@@ -626,7 +629,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/hp-tattoo.webp" alt="Desenho Digital Harry Potter">
+                    <img loading="lazy" src="./assets/projects/art/hp-tattoo.webp" alt="Desenho Digital Harry Potter">
                     <div class="portfolio-overlay">
                         <h3>Desenho Digital Harry Potter</h3>
                         <p>Criação e edição de desenho e vídeo de apresentação</p>
@@ -636,7 +639,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-valence.webp" alt="Valence">
+                    <img loading="lazy" src="./assets/projects/layout/layout-valence.webp" alt="Valence">
                     <div class="portfolio-overlay">
                         <h3>Valence</h3>
                         <p>Layout para site</p>
@@ -646,7 +649,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/facadecortes-video.webp" alt="Faca de Cortes">
+                    <img loading="lazy" src="./assets/projects/video/facadecortes-video.webp" alt="Faca de Cortes">
                     <div class="portfolio-overlay">
                         <h3>Faca de Cortes</h3>
                         <p>Edição de Vídeo e Thumb para Youtube</p>
@@ -656,7 +659,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/facadecortes-mockup.webp" alt="Faca de Cortes">
+                    <img loading="lazy" src="./assets/projects/identidade/facadecortes-mockup.webp" alt="Faca de Cortes">
                     <div class="portfolio-overlay">
                         <h3>Faca de Cortes</h3>
                         <p>Logo/Identidade Visual</p>
@@ -666,7 +669,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/facadecortes-logo.webp" alt="Faca de Cortes">
+                    <img loading="lazy" src="./assets/projects/identidade/facadecortes-logo.webp" alt="Faca de Cortes">
                     <div class="portfolio-overlay">
                         <h3>Faca de Cortes</h3>
                         <p>Logo/Identidade Visual</p>
@@ -676,7 +679,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-cisassesment.webp" alt="Cis Assessment">
+                    <img loading="lazy" src="./assets/projects/layout/layout-cisassesment.webp" alt="Cis Assessment">
                     <div class="portfolio-overlay">
                         <h3>Cis Assessment</h3>
                         <p>Layout para site</p>
@@ -686,7 +689,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/bonecosmra-video.webp" alt="MRA Natação">
+                    <img loading="lazy" src="./assets/projects/video/bonecosmra-video.webp" alt="MRA Natação">
                     <div class="portfolio-overlay">
                         <h3>MRA Natação</h3>
                         <p>Edição para Apresentação da Criação de Arte</p>
@@ -696,7 +699,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/pilates-vetor.webp" alt="Autêntico Pilates">
+                    <img loading="lazy" src="./assets/projects/art/pilates-vetor.webp" alt="Autêntico Pilates">
                     <div class="portfolio-overlay">
                         <h3>Autêntico Pilates</h3>
                         <p>Vetorização para Estampa de Camiseta</p>
@@ -707,7 +710,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="art">
-                    <img src="./assets/projects/art/bonecos-mra.webp" alt="MRA Natação">
+                    <img loading="lazy" src="./assets/projects/art/bonecos-mra.webp" alt="MRA Natação">
                     <div class="portfolio-overlay">
                         <h3>MRA Natação</h3>
                         <p>Criação de bonecos para nados</p>
@@ -717,7 +720,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="layout">
-                    <img src="./assets/projects/layout/layout-cannabis.webp" alt="Terapeutas Cannabicos">
+                    <img loading="lazy" src="./assets/projects/layout/layout-cannabis.webp" alt="Terapeutas Cannabicos">
                     <div class="portfolio-overlay">
                         <h3>Terapeutas Cannabicos</h3>
                         <p>Layout para site</p>
@@ -727,7 +730,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/skategun-video2.webp" alt="skategun">
+                    <img loading="lazy" src="./assets/projects/video/skategun-video2.webp" alt="skategun">
                     <div class="portfolio-overlay">
                         <h3>skategun</h3>
                         <p>Edição de Vídeo e Thumb para Youtube</p>
@@ -737,7 +740,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/skategun-video.webp" alt="skategun">
+                    <img loading="lazy" src="./assets/projects/video/skategun-video.webp" alt="skategun">
                     <div class="portfolio-overlay">
                         <h3>skategun</h3>
                         <p>Edição de Vídeo para Youtube</p>
@@ -747,7 +750,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="id">
-                    <img src="./assets/projects/identidade/mra-logo.webp" alt="MRA Natação">
+                    <img loading="lazy" src="./assets/projects/identidade/mra-logo.webp" alt="MRA Natação">
                     <div class="portfolio-overlay">
                         <h3>MRA Natação</h3>
                         <p>Logo/Identidade Visual</p>
@@ -757,7 +760,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/yeah-video2.webp" alt="Trio YEAH">
+                    <img loading="lazy" src="./assets/projects/video/yeah-video2.webp" alt="Trio YEAH">
                     <div class="portfolio-overlay">
                         <h3>Trio YEAH</h3>
                         <p>Edição de Vídeo de dança</p>
@@ -767,7 +770,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/yeah-video.webp" alt="Trio YEAH">
+                    <img loading="lazy" src="./assets/projects/video/yeah-video.webp" alt="Trio YEAH">
                     <div class="portfolio-overlay">
                         <h3>Trio YEAH</h3>
                         <p>Edição de Vídeo de dança</p>
@@ -777,7 +780,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/nnn-clipe.webp" alt="NNN Não Nega Nêga">
+                    <img loading="lazy" src="./assets/projects/video/nnn-clipe.webp" alt="NNN Não Nega Nêga">
                     <div class="portfolio-overlay">
                         <h3>NNN Não Nega Nêga</h3>
                         <p>Edição de Vídeo Clipe</p>
@@ -787,7 +790,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/highscore-clipe.webp" alt="High Score">
+                    <img loading="lazy" src="./assets/projects/video/highscore-clipe.webp" alt="High Score">
                     <div class="portfolio-overlay">
                         <h3>High Score</h3>
                         <p>Edição de Vídeo Clipe</p>
@@ -797,7 +800,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/pilates-day.webp" alt="Pilates Day">
+                    <img loading="lazy" src="./assets/projects/video/pilates-day.webp" alt="Pilates Day">
                     <div class="portfolio-overlay">
                         <h3>Pilates Day</h3>
                         <p>Edição de Vídeo</p>
@@ -807,7 +810,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/yeah-clipe.webp" alt="Trio YEAH">
+                    <img loading="lazy" src="./assets/projects/video/yeah-clipe.webp" alt="Trio YEAH">
                     <div class="portfolio-overlay">
                         <h3>Trio YEAH</h3>
                         <p>Edição de Vídeo Clipe</p>
@@ -817,7 +820,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/yeah-video3.webp" alt="Trio YEAH">
+                    <img loading="lazy" src="./assets/projects/video/yeah-video3.webp" alt="Trio YEAH">
                     <div class="portfolio-overlay">
                         <h3>Trio YEAH</h3>
                         <p>Edição de Vídeo Clipe</p>
@@ -827,7 +830,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="video">
-                    <img src="./assets/projects/video/4anos-pilates.webp" alt="Aniversário Autêntico Pilates">
+                    <img loading="lazy" src="./assets/projects/video/4anos-pilates.webp" alt="Aniversário Autêntico Pilates">
                     <div class="portfolio-overlay">
                         <h3>Aniversário Autêntico Pilates</h3>
                         <p>Edição de Vídeo</p>
@@ -837,7 +840,7 @@
                 </div>
 
                 <div class="portfolio-item" data-category="photo">
-                    <img src="./assets/projects/foto/yeah-img.webp" alt="Trio YEAH">
+                    <img loading="lazy" src="./assets/projects/foto/yeah-img.webp" alt="Trio YEAH">
                     <div class="portfolio-overlay">
                         <h3>Trio YEAH</h3>
                         <p>Arte para Música</p>
